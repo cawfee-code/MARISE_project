@@ -1,9 +1,9 @@
-from fastapi import FastAPI, UploadFile, File, Response
+from fastapi import FastAPI, UploadFile, File, Form, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import cv2
 import numpy as np
-from typing import List
+from typing import List, Optional
 
 from backend.engines.ai_detection import run_detection
 from backend.engines.characterize import analyze_spill_geometry
@@ -22,9 +22,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ==========================================
-# PYDANTIC MODELS
-# ==========================================
 class GeometryData(BaseModel):
     status: str
     image_width: int
@@ -35,6 +32,12 @@ class GeometryData(BaseModel):
     centroid_y: int
     orientation_deg: float
     confidence: str
+    lat: Optional[float] = 18.5000
+    lon: Optional[float] = 72.5000
+    min_lat: Optional[float] = 18.2000
+    max_lat: Optional[float] = 18.8000
+    min_lon: Optional[float] = 72.2000
+    max_lon: Optional[float] = 72.8000
 
 class Stage2Output(BaseModel):
     status: str
@@ -80,37 +83,74 @@ class Stage4Output(BaseModel):
     stage: int
     data: Stage4Data
 
-# Simplified input so you can easily test Stage 6 manually in Swagger
 class ForecastInput(BaseModel):
     lat: float
     lon: float
 
-# ==========================================
-# INDIVIDUAL PIPELINE ENDPOINTS (STAGES 1-6)
-# ==========================================
+
 @app.post("/api/v1/detect")
-async def detect_spill(file: UploadFile = File(...)):
+async def detect_spill(
+    file: UploadFile = File(...),
+    lat: Optional[float] = Form(None),
+    lon: Optional[float] = Form(None),
+    min_lat: Optional[float] = Form(None),
+    max_lat: Optional[float] = Form(None),
+    min_lon: Optional[float] = Form(None),
+    max_lon: Optional[float] = Form(None)
+):
     image_bytes = await file.read()
-    png_mask_bytes = run_detection(image_bytes)
-    return Response(content=png_mask_bytes, media_type="image/png")
+    png_mask_bytes = run_detection(image_bytes, lat=lat, lon=lon)
+    
+    headers = {}
+    if lat is not None and float(lat) != 0.0: headers["X-Lat"] = str(lat)
+    if lon is not None and float(lon) != 0.0: headers["X-Lon"] = str(lon)
+    if min_lat is not None and float(min_lat) != 0.0: headers["X-Min-Lat"] = str(min_lat)
+    if max_lat is not None and float(max_lat) != 0.0: headers["X-Max-Lat"] = str(max_lat)
+    if min_lon is not None and float(min_lon) != 0.0: headers["X-Min-Lon"] = str(min_lon)
+    if max_lon is not None and float(max_lon) != 0.0: headers["X-Max-Lon"] = str(max_lon)
+
+    return Response(content=png_mask_bytes, media_type="image/png", headers=headers)
 
 @app.post("/api/v1/characterize")
-async def characterize_spill(mask_file: UploadFile = File(...)):
+async def characterize_spill(
+    mask_file: UploadFile = File(...),
+    lat: Optional[float] = Form(None),
+    lon: Optional[float] = Form(None),
+    min_lat: Optional[float] = Form(None),
+    max_lat: Optional[float] = Form(None),
+    min_lon: Optional[float] = Form(None),
+    max_lon: Optional[float] = Form(None)
+):
     mask_bytes = await mask_file.read()
     np_arr = np.frombuffer(mask_bytes, np.uint8)
     mask_image = cv2.imdecode(np_arr, cv2.IMREAD_GRAYSCALE)
     
     binary_mask = (mask_image > 127).astype(np.uint8)
-    geometry = analyze_spill_geometry(binary_mask)
+    geometry = analyze_spill_geometry(
+        binary_mask,
+        lat=lat,
+        lon=lon,
+        min_lat=min_lat,
+        max_lat=max_lat,
+        min_lon=min_lon,
+        max_lon=max_lon
+    )
     return {"status": "success", "stage": 2, "geometry": geometry}
 
 @app.post("/api/v1/hindcast")
 async def traceback_spill(data: Stage2Output):
+    image_bounds = (
+        data.geometry.min_lon,
+        data.geometry.min_lat,
+        data.geometry.max_lon,
+        data.geometry.max_lat
+    )
     drift_results = run_hindcast(
         centroid_x=data.geometry.centroid_x, 
         centroid_y=data.geometry.centroid_y,
         width=data.geometry.image_width,
-        height=data.geometry.image_height
+        height=data.geometry.image_height,
+        image_bounds=image_bounds
     )
     return {"status": "success", "stage": 3, "data": drift_results}
 
@@ -131,27 +171,48 @@ async def generate_forecast(payload: ForecastInput):
     forecast_results = run_forecast(payload.lat, payload.lon)
     return {"status": "success", "stage": 6, "data": forecast_results}
 
-# ==========================================
-# STAGE 7: MASTER ORCHESTRATION (THE COMPLETE INVESTIGATION)
-# ==========================================
+
 @app.post("/api/v1/investigate")
-async def run_complete_investigation(file: UploadFile = File(...)):
+async def run_complete_investigation(
+    file: UploadFile = File(...),
+    lat: Optional[float] = Form(None),
+    lon: Optional[float] = Form(None),
+    min_lat: Optional[float] = Form(None),
+    max_lat: Optional[float] = Form(None),
+    min_lon: Optional[float] = Form(None),
+    max_lon: Optional[float] = Form(None)
+):
     # 1. Detection
     image_bytes = await file.read()
-    mask_bytes = run_detection(image_bytes)
+    mask_bytes = run_detection(image_bytes, lat=lat, lon=lon)
     
-    # 2. Characterization
+    # 2. Characterization (Passes coordinates to Stage 2)
     np_arr = np.frombuffer(mask_bytes, np.uint8)
     mask_image = cv2.imdecode(np_arr, cv2.IMREAD_GRAYSCALE)
     binary_mask = (mask_image > 127).astype(np.uint8)
-    geometry = analyze_spill_geometry(binary_mask)
+    geometry = analyze_spill_geometry(
+        binary_mask,
+        lat=lat,
+        lon=lon,
+        min_lat=min_lat,
+        max_lat=max_lat,
+        min_lon=min_lon,
+        max_lon=max_lon
+    )
     
-    # 3. Hindcast
+    # 3. Hindcast (Uses coordinates resolved by Stage 2)
+    image_bounds = (
+        geometry["min_lon"],
+        geometry["min_lat"],
+        geometry["max_lon"],
+        geometry["max_lat"]
+    )
     hindcast = run_hindcast(
         centroid_x=geometry["centroid_x"], 
         centroid_y=geometry["centroid_y"],
         width=geometry["image_width"],
-        height=geometry["image_height"]
+        height=geometry["image_height"],
+        image_bounds=image_bounds
     )
     
     # 4. AIS Match

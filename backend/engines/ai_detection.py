@@ -40,7 +40,7 @@ def validate_input(color_img: np.ndarray, gray_img: np.ndarray) -> bool:
         return False
     return True
 
-def run_detection(image_bytes: bytes) -> bytes:
+def run_detection(image_bytes: bytes, lat: float = None, lon: float = None) -> bytes:
     np_arr = np.frombuffer(image_bytes, dtype=np.uint8)
     color_img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
     gray_img = cv2.imdecode(np_arr, cv2.IMREAD_GRAYSCALE)
@@ -112,8 +112,7 @@ def run_detection(image_bytes: bytes) -> bytes:
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
     stitched_256 = cv2.morphologyEx(filtered_mask, cv2.MORPH_CLOSE, kernel)
 
-    # 7. CRITICAL: Restore the Mask to the Original Satellite Dimensions
-    # INTER_NEAREST guarantees pixel values remain strictly 0 or 255 without gray edge blur
+    # 7. Restore the Mask to the Original Satellite Dimensions
     if (orig_w != MODEL_INPUT_SIZE) or (orig_h != MODEL_INPUT_SIZE):
         final_native_mask = cv2.resize(stitched_256, (orig_w, orig_h), interpolation=cv2.INTER_NEAREST)
     else:
