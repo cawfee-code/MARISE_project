@@ -69,6 +69,7 @@ class Vessel(BaseModel):
     type: str
     lat: float
     lon: float
+    speed_knots: Optional[float] = None
     status: str
     match_confidence: str
 
