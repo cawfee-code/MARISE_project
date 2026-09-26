@@ -1,0 +1,522 @@
+{
+  "2": {
+    "status": "success",
+    "stage": 2,
+    "geometry": {
+      "status": "success",
+      "image_width": 435,
+      "image_height": 255,
+      "area_pixels": 11478,
+      "area_km2": 1.1479,
+      "centroid_x": 201,
+      "centroid_y": 110,
+      "orientation_deg": 29.81,
+      "confidence": "HIGH",
+      "lat": 26.5,
+      "lon": 56.25,
+      "min_lat": 26.2,
+      "max_lat": 26.8,
+      "min_lon": 55.95,
+      "max_lon": 56.55
+    }
+  },
+  "3": {
+    "status": "success",
+    "stage": 3,
+    "data": {
+      "spill_location": {
+        "lat": 26.5412,
+        "lon": 56.2272
+      },
+      "origin_polygon": [
+        {
+          "lat": 26.6416,
+          "lon": 56.0396
+        },
+        {
+          "lat": 26.6416,
+          "lon": 56.2304
+        },
+        {
+          "lat": 26.5379,
+          "lon": 56.2304
+        },
+        {
+          "lat": 26.5379,
+          "lon": 56.0396
+        }
+      ],
+      "estimated_dump_time": "Lookback Window: -2h to -12h (Earliest: 2026-09-25 18:35 UTC)",
+      "confidence_score": "81%"
+    }
+  },
+  "4": {
+    "status": "success",
+    "stage": 4,
+    "data": {
+      "total_ships_scanned": 5923,
+      "ships_in_vicinity": 30,
+      "flagged_vessels": [
+        {
+          "mmsi": "265904247",
+          "name": "COSCO BREEZE",
+          "type": "Crude Oil Tanker",
+          "lat": 26.5694,
+          "lon": 56.2184,
+          "speed_knots": 4.2,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "89%"
+        },
+        {
+          "mmsi": "639012103",
+          "name": "SEA GIANT",
+          "type": "Chemical Tanker",
+          "lat": 26.5471,
+          "lon": 56.2104,
+          "speed_knots": 14.8,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "56%"
+        },
+        {
+          "mmsi": "704319111",
+          "name": "MSC GIANT",
+          "type": "Bulk Carrier",
+          "lat": 26.5502,
+          "lon": 56.0745,
+          "speed_knots": 13.1,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "42%"
+        },
+        {
+          "mmsi": "653563457",
+          "name": "CMA CGM GIANT",
+          "type": "Container Ship",
+          "lat": 26.6131,
+          "lon": 56.0927,
+          "speed_knots": 17.5,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "27%"
+        }
+      ],
+      "all_nearby_vessels": [
+        {
+          "mmsi": "354545901",
+          "name": "STAR STAR",
+          "type": "Bulk Carrier",
+          "lat": 25.4083,
+          "lon": 56.177,
+          "speed_knots": 16.1,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "176144199",
+          "name": "MSC GIVEN",
+          "type": "Cargo",
+          "lat": 26.755,
+          "lon": 56.9427,
+          "speed_knots": 12.3,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "845926572",
+          "name": "OOCL PIONEER",
+          "type": "Passenger",
+          "lat": 27.0268,
+          "lon": 57.1583,
+          "speed_knots": 15.7,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "755375729",
+          "name": "OOCL PIONEER",
+          "type": "Container Ship",
+          "lat": 27.4809,
+          "lon": 57.5309,
+          "speed_knots": 17.8,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "653563457",
+          "name": "CMA CGM GIANT",
+          "type": "Container Ship",
+          "lat": 26.6131,
+          "lon": 56.0927,
+          "speed_knots": 17.5,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "27%"
+        },
+        {
+          "mmsi": "849190900",
+          "name": "HMM KNIGHT",
+          "type": "Passenger",
+          "lat": 27.982,
+          "lon": 56.6807,
+          "speed_knots": 16.1,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "639012103",
+          "name": "SEA GIANT",
+          "type": "Chemical Tanker",
+          "lat": 26.5471,
+          "lon": 56.2104,
+          "speed_knots": 14.8,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "56%"
+        },
+        {
+          "mmsi": "189996744",
+          "name": "SEA SPIRIT",
+          "type": "Bulk Carrier",
+          "lat": 27.8679,
+          "lon": 54.6142,
+          "speed_knots": 16.6,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "501582738",
+          "name": "OOCL GIVEN",
+          "type": "Tug",
+          "lat": 26.1963,
+          "lon": 55.1554,
+          "speed_knots": 16.5,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "966700318",
+          "name": "EVER KNIGHT",
+          "type": "Fishing",
+          "lat": 27.302,
+          "lon": 56.5722,
+          "speed_knots": 13.5,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "480644723",
+          "name": "GLOBAL STAR",
+          "type": "Container Ship",
+          "lat": 25.6086,
+          "lon": 54.9992,
+          "speed_knots": 15.4,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "634235340",
+          "name": "MSC WAVE",
+          "type": "Fishing",
+          "lat": 26.3121,
+          "lon": 54.6984,
+          "speed_knots": 16.2,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "265904247",
+          "name": "COSCO BREEZE",
+          "type": "Crude Oil Tanker",
+          "lat": 26.5694,
+          "lon": 56.2184,
+          "speed_knots": 4.2,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "89%"
+        },
+        {
+          "mmsi": "703525514",
+          "name": "OCEAN STAR",
+          "type": "Tug",
+          "lat": 25.886,
+          "lon": 57.2928,
+          "speed_knots": 15.5,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "120084875",
+          "name": "SEA EXPLORER",
+          "type": "Passenger",
+          "lat": 27.7615,
+          "lon": 57.2743,
+          "speed_knots": 12,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "713692780",
+          "name": "MAERSK STAR",
+          "type": "Fishing",
+          "lat": 27.9999,
+          "lon": 54.6756,
+          "speed_knots": 18,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "765545972",
+          "name": "MAERSK WAVE",
+          "type": "Passenger",
+          "lat": 26.3948,
+          "lon": 57.2584,
+          "speed_knots": 13.5,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "391197750",
+          "name": "STAR GIVEN",
+          "type": "Passenger",
+          "lat": 26.9862,
+          "lon": 55.1481,
+          "speed_knots": 12.5,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "684127378",
+          "name": "CMA CGM PIONEER",
+          "type": "Cargo",
+          "lat": 25.6334,
+          "lon": 56.7684,
+          "speed_knots": 18.4,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "704319111",
+          "name": "MSC GIANT",
+          "type": "Bulk Carrier",
+          "lat": 26.5502,
+          "lon": 56.0745,
+          "speed_knots": 13.1,
+          "status": "FLAGGED - Polygon Intersection",
+          "match_confidence": "42%"
+        },
+        {
+          "mmsi": "403727864",
+          "name": "CMA CGM WAVE",
+          "type": "Tug",
+          "lat": 27.6227,
+          "lon": 57.2611,
+          "speed_knots": 18.3,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "854497657",
+          "name": "MSC GIVEN",
+          "type": "Cargo",
+          "lat": 27.0373,
+          "lon": 56.5315,
+          "speed_knots": 14.7,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "494114432",
+          "name": "EVER STAR",
+          "type": "Tug",
+          "lat": 25.6188,
+          "lon": 55.3193,
+          "speed_knots": 16.8,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "946055950",
+          "name": "STAR BREEZE",
+          "type": "Cargo",
+          "lat": 26.6272,
+          "lon": 54.9888,
+          "speed_knots": 12.8,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "257416158",
+          "name": "SEA SENTINEL",
+          "type": "Tug",
+          "lat": 27.7153,
+          "lon": 55.216,
+          "speed_knots": 14.5,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "125248750",
+          "name": "GLOBAL EXPLORER",
+          "type": "Tug",
+          "lat": 26.0727,
+          "lon": 56.8791,
+          "speed_knots": 15.8,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "844702835",
+          "name": "EVER BREEZE",
+          "type": "Container Ship",
+          "lat": 25.7405,
+          "lon": 56.1749,
+          "speed_knots": 15.5,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "309689847",
+          "name": "MSC STAR",
+          "type": "Bulk Carrier",
+          "lat": 25.0969,
+          "lon": 55.0101,
+          "speed_knots": 16,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "229292471",
+          "name": "OCEAN GIVEN",
+          "type": "Fishing",
+          "lat": 25.4438,
+          "lon": 54.7586,
+          "speed_knots": 13.7,
+          "status": "Clear",
+          "match_confidence": "0%"
+        },
+        {
+          "mmsi": "987826221",
+          "name": "MAERSK STAR",
+          "type": "Tug",
+          "lat": 27.355,
+          "lon": 54.7484,
+          "speed_knots": 17.8,
+          "status": "Clear",
+          "match_confidence": "0%"
+        }
+      ]
+    }
+  },
+  "5": {
+    "status": "success",
+    "stage": 5,
+    "data": {
+      "case_id": "MARISE-IN-950E5AE4",
+      "timestamp": "2026-09-26T06:37:34Z",
+      "verdict_summary": "HIGH COMPATIBILITY: COSCO BREEZE isolated as prime candidate.",
+      "traffic_audit": {
+        "total_regional_fleet_scanned": 5923,
+        "corridor_suspects_isolated": 4
+      },
+      "ranked_candidates": [
+        {
+          "rank": 1,
+          "vessel_name": "COSCO BREEZE",
+          "mmsi": "265904247",
+          "type": "Crude Oil Tanker",
+          "overall_compatibility": "89%",
+          "investigation_priority": "HIGH",
+          "evidence_breakdown": {
+            "spatial_proximity_score": "91%",
+            "temporal_match_score": "90%",
+            "vessel_cargo_risk": "98%",
+            "behavioral_anomaly_score": "88%",
+            "behavioral_observation": "Severe slowdown detected (4.2 knots in open corridor)"
+          }
+        },
+        {
+          "rank": 2,
+          "vessel_name": "SEA GIANT",
+          "mmsi": "639012103",
+          "type": "Chemical Tanker",
+          "overall_compatibility": "56%",
+          "investigation_priority": "MEDIUM",
+          "evidence_breakdown": {
+            "spatial_proximity_score": "58%",
+            "temporal_match_score": "57%",
+            "vessel_cargo_risk": "72%",
+            "behavioral_anomaly_score": "30%",
+            "behavioral_observation": "Normal cruising speed (14.8 knots)"
+          }
+        },
+        {
+          "rank": 3,
+          "vessel_name": "MSC GIANT",
+          "mmsi": "704319111",
+          "type": "Bulk Carrier",
+          "overall_compatibility": "42%",
+          "investigation_priority": "LOW",
+          "evidence_breakdown": {
+            "spatial_proximity_score": "44%",
+            "temporal_match_score": "43%",
+            "vessel_cargo_risk": "40%",
+            "behavioral_anomaly_score": "30%",
+            "behavioral_observation": "Normal cruising speed (13.1 knots)"
+          }
+        },
+        {
+          "rank": 4,
+          "vessel_name": "CMA CGM GIANT",
+          "mmsi": "653563457",
+          "type": "Container Ship",
+          "overall_compatibility": "27%",
+          "investigation_priority": "LOW",
+          "evidence_breakdown": {
+            "spatial_proximity_score": "29%",
+            "temporal_match_score": "28%",
+            "vessel_cargo_risk": "40%",
+            "behavioral_anomaly_score": "30%",
+            "behavioral_observation": "Normal cruising speed (17.5 knots)"
+          }
+        }
+      ],
+      "legal_framework": "MARPOL Annex I - International Maritime Organization (IMO) Environmental Protocol",
+      "system_disclaimer": "This system provides mathematical attribution ranking based on physical drift reconstruction and navigational records. It does not establish legal guilt. Physical port sampling and chemical fingerprinting are required prior to enforcement.",
+      "recommended_action": "Flag COSCO BREEZE (MMSI: 265904247) for priority Port State Control inspection upon arrival at next destination. Request oil record book (ORB) inspection and bilge pump discharge logs."
+    }
+  },
+  "6": {
+    "status": "success",
+    "stage": 6,
+    "data": {
+      "warning_status": "MONITORING - Open Water Drift (No Shoreline Impact Detected)",
+      "coastal_impact_risk": "LOW",
+      "projected_shoreline_impact_percent": "0.0%",
+      "projections": [
+        {
+          "timeframe": "+6h",
+          "projected_utc": "2026-09-26 12:42 UTC",
+          "lat": 26.4526,
+          "lon": 56.3392,
+          "uncertainty_radius_km": 2.99
+        },
+        {
+          "timeframe": "+12h",
+          "projected_utc": "2026-09-26 18:42 UTC",
+          "lat": 26.4076,
+          "lon": 56.4305,
+          "uncertainty_radius_km": 3.86
+        },
+        {
+          "timeframe": "+24h",
+          "projected_utc": "2026-09-27 06:42 UTC",
+          "lat": 26.324,
+          "lon": 56.6209,
+          "uncertainty_radius_km": 5.29
+        },
+        {
+          "timeframe": "+48h",
+          "projected_utc": "2026-09-28 06:42 UTC",
+          "lat": 26.1312,
+          "lon": 56.983,
+          "uncertainty_radius_km": 7.33
+        }
+      ]
+    }
+  }
+}
